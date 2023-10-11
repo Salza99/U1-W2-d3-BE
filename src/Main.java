@@ -56,17 +56,19 @@ public class Main {
 
         //ordini
         Order orderA = new Order(LocalDate.of(2020,10,8),a,listOfBooksA);
-        Order orderB = new Order(LocalDate.of(2020,10,8),a,listOfBabyB);
-        Order orderC = new Order(LocalDate.of(2020,10,8),b,listOfBabyA);
-        Order orderD = new Order(LocalDate.of(2020,10,8),c,listOfBooksB);
-        Order orderE = new Order(LocalDate.of(2020,10,8),d, listOfBoysB);
-        Order orderF = new Order(LocalDate.of(2020,10,8),e, listOfBooksA);
+        Order orderB = new Order(LocalDate.of(2021,2,13),a,listOfBabyB);
+        Order orderC = new Order(LocalDate.of(2022,5,29),b,listOfBabyA);
+        Order orderD = new Order(LocalDate.of(2021,2,18),c,listOfBooksB);
+        Order orderE = new Order(LocalDate.of(2021,3,6),d, listOfBoysB);
+        Order orderF = new Order(LocalDate.of(2021,2,2),e, listOfBooksA);
         //lista di ordini
         List<Order> listOfOrder = new ArrayList<>();
         listOfOrder.add(orderA);
         listOfOrder.add(orderB);
         listOfOrder.add(orderC);
         listOfOrder.add(orderD);
+        listOfOrder.add(orderE);
+        listOfOrder.add(orderF);
         //Esercizio 1
         System.out.println("---------------esercizio 1--------------");
         listOfBooksA.stream().filter(product -> product.getPrice() < 100 ).forEach(System.out::println);
@@ -80,6 +82,9 @@ public class Main {
         System.out.println(listOfBoysB);
         //Esercizio 4
         System.out.println("---------------esercizio 4--------------");
-
+        LocalDate february = LocalDate.of(2021,2,1);
+        LocalDate april = LocalDate.of(2021,03,1);
+        List<Order> listOfCustomerTTwoFebruary= listOfOrder.stream().filter(order -> order.getCustomer().getTier() == 2 && order.getOrderDate().isAfter(february) && order.getOrderDate().isBefore(april)).toList();
+        System.out.println(listOfCustomerTTwoFebruary);
     }
 }

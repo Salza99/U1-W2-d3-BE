@@ -25,6 +25,14 @@ public class Order {
         return products;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public LocalDate getOrderDate() {
+        return orderDate;
+    }
+
     @Override
     public String toString() {
         return "Order{" +

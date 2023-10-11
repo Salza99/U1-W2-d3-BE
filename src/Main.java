@@ -83,8 +83,9 @@ public class Main {
         //Esercizio 4
         System.out.println("---------------esercizio 4--------------");
         LocalDate february = LocalDate.of(2021,2,1);
-        LocalDate april = LocalDate.of(2021,03,1);
+        LocalDate april = LocalDate.of(2021,3,1);
         List<Order> listOfCustomerTTwoFebruary= listOfOrder.stream().filter(order -> order.getCustomer().getTier() == 2 && order.getOrderDate().isAfter(february) && order.getOrderDate().isBefore(april)).toList();
-        System.out.println(listOfCustomerTTwoFebruary);
+        listOfCustomerTTwoFebruary.forEach(order -> System.out.println(order.getProducts()));
+
     }
 }

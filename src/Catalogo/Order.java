@@ -12,9 +12,9 @@ public class Order {
     private List<Product> products;
     private Customer customer;
 
-    public Order( Customer customer, List<Product> products) {
+    public Order(LocalDate orderDate, Customer customer, List<Product> products) {
         this.id = new Random().nextLong(0, 99999);
-        this.orderDate = LocalDate.now();
+        this.orderDate = orderDate;
         this.deliveryDate = this.orderDate.plusDays(7);
         this.customer = customer;
         this.status = "In Preparazione";

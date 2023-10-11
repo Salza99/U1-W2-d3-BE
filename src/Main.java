@@ -2,6 +2,7 @@ import Catalogo.Customer;
 import Catalogo.Order;
 import Catalogo.Product;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,10 +13,12 @@ import java.util.stream.Collectors;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        Map<Customer, List<Order>> mapOfCustomerwithOrders = new HashMap<>();
+        // clienti
         Customer a = new Customer("Marco", 1);
         Customer b = new Customer("Lucio", 1);
         Customer c = new Customer("Maria", 2);
+        Customer d = new Customer("Angelo", 2);
+        Customer e = new Customer("Sempronio", 1);
         // Categoria book
         Product bookA = new Product("La storia di Cesare","Books",24.99);
         Product bookB = new Product("Le armi medievali","Books",19.99);
@@ -52,10 +55,12 @@ public class Main {
         List<Product> listOfBoysB = new ArrayList<>(List.of(boysE,boysA,boysD));
 
         //ordini
-        Order orderA = new Order(a,listOfBooksA);
-        Order orderB = new Order(a,listOfBabyB);
-        Order orderC = new Order(b,listOfBabyA);
-        Order orderD = new Order(c,listOfBooksB);
+        Order orderA = new Order(LocalDate.of(2020,10,8),a,listOfBooksA);
+        Order orderB = new Order(LocalDate.of(2020,10,8),a,listOfBabyB);
+        Order orderC = new Order(LocalDate.of(2020,10,8),b,listOfBabyA);
+        Order orderD = new Order(LocalDate.of(2020,10,8),c,listOfBooksB);
+        Order orderE = new Order(LocalDate.of(2020,10,8),d, listOfBoysB);
+        Order orderF = new Order(LocalDate.of(2020,10,8),e, listOfBooksA);
         //lista di ordini
         List<Order> listOfOrder = new ArrayList<>();
         listOfOrder.add(orderA);
@@ -75,6 +80,6 @@ public class Main {
         System.out.println(listOfBoysB);
         //Esercizio 4
         System.out.println("---------------esercizio 4--------------");
-        
+
     }
 }

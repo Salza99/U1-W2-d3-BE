@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -15,6 +16,7 @@ public class Main {
         Customer a = new Customer("Marco", 1);
         Customer b = new Customer("Lucio", 1);
         Customer c = new Customer("Maria", 2);
+        // Categoria book
         Product bookA = new Product("La storia di Cesare","Books",24.99);
         Product bookB = new Product("Le armi medievali","Books",19.99);
         Product bookC = new Product("Roma: l'impero infinito","Books",240.99);
@@ -26,12 +28,36 @@ public class Main {
         Product bookI = new Product("L'incubo di Hill House","Books",9.99);
         Product bookL = new Product("Le guide del tramonto","Books",120.99);
         Product bookM = new Product("Cronache marziane","Books",16.99);
+        //categoria Baby
+        Product babyA = new Product("Pannolini","Baby",9.99);
+        Product babyB = new Product("fasciatoio","Baby",196.99);
+        Product babyC = new Product("Salviette","Baby",6.99);
+        Product babyD = new Product("Carrozzina","Baby",186.99);
+        Product babyE = new Product("Culla","Baby",124.99);
+        //liste di prodotti
+        //libri
+        List<Product> listOfBooksA = new ArrayList<>(List.of(bookA, bookB, bookC, bookD, bookE, bookF, bookG, bookH, bookI,bookL,bookM));
+        List<Product> listOfBooksB = new ArrayList<>(List.of(bookA, bookB, bookC, bookD, bookE));
+        //baby
+        List<Product> listOfBabyA = new ArrayList<>(List.of(babyA,babyB,babyE));
+        List<Product> listOfBabyB = new ArrayList<>(List.of(babyA,babyE,babyD));
 
-        List<Product> listOfBooks = new ArrayList<>(List.of(new Product[]{bookA, bookB, bookC, bookD, bookE, bookF, bookG, bookH, bookI,bookL,bookM}));
-
-        listOfBooks.stream().filter(product -> product.getPrice() < 100 ).forEach(System.out::println);
-        Order orderA = new Order(a,listOfBooks);
-
+        //ordini
+        Order orderA = new Order(a,listOfBooksA);
+        Order orderB = new Order(a,listOfBabyB);
+        Order orderC = new Order(b,listOfBabyA);
+        Order orderD = new Order(c,listOfBooksB);
+        //lista di ordini
+        List<Order> listOfOrder = new ArrayList<>();
+        listOfOrder.add(orderA);
+        listOfOrder.add(orderB);
+        listOfOrder.add(orderC);
+        listOfOrder.add(orderD);
+        //Esercizio 1
+        listOfBooksA.stream().filter(product -> product.getPrice() < 100 ).forEach(System.out::println);
+        //Esercizio 2
+        List<Order> listOfBabyOrder = listOfOrder.stream().filter(order -> order.getProducts().stream().anyMatch(product -> product.getCategory().equals("Baby"))).toList();
+        listOfBabyOrder.forEach(System.out::println);
 
 
     }

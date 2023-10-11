@@ -20,4 +20,20 @@ public class Order {
         this.status = "In Preparazione";
         this.products = products;
     }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", orderDate=" + orderDate +
+                ", deliveryDate=" + deliveryDate +
+                ", products=" + products +
+                ", customer=" + customer +
+                '}';
+    }
 }

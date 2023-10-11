@@ -34,6 +34,12 @@ public class Main {
         Product babyC = new Product("Salviette","Baby",6.99);
         Product babyD = new Product("Carrozzina","Baby",186.99);
         Product babyE = new Product("Culla","Baby",124.99);
+        //categoria boys
+        Product boysA = new Product("t-shirt","Boys",12.99);
+        Product boysB = new Product("airpods","Boys",19.99);
+        Product boysC = new Product("watch","Boys", 29.99);
+        Product boysD = new Product("skateboard","Boys", 29.99);
+        Product boysE = new Product("profumo","Boys", 9.99);
         //liste di prodotti
         //libri
         List<Product> listOfBooksA = new ArrayList<>(List.of(bookA, bookB, bookC, bookD, bookE, bookF, bookG, bookH, bookI,bookL,bookM));
@@ -41,6 +47,9 @@ public class Main {
         //baby
         List<Product> listOfBabyA = new ArrayList<>(List.of(babyA,babyB,babyE));
         List<Product> listOfBabyB = new ArrayList<>(List.of(babyA,babyE,babyD));
+        //boys
+        List<Product> listOfBoysA = new ArrayList<>(List.of(boysA,boysC));
+        List<Product> listOfBoysB = new ArrayList<>(List.of(boysE,boysA,boysD));
 
         //ordini
         Order orderA = new Order(a,listOfBooksA);
@@ -54,11 +63,18 @@ public class Main {
         listOfOrder.add(orderC);
         listOfOrder.add(orderD);
         //Esercizio 1
+        System.out.println("---------------esercizio 1--------------");
         listOfBooksA.stream().filter(product -> product.getPrice() < 100 ).forEach(System.out::println);
         //Esercizio 2
+        System.out.println("---------------esercizio 2--------------");
         List<Order> listOfBabyOrder = listOfOrder.stream().filter(order -> order.getProducts().stream().anyMatch(product -> product.getCategory().equals("Baby"))).toList();
         listOfBabyOrder.forEach(System.out::println);
-
-
+        //Esercizio 3
+        System.out.println("---------------esercizio 3--------------");
+        listOfBoysB.stream().forEach(product -> product.setPrice(product.getPrice() * 90 / 100));
+        System.out.println(listOfBoysB);
+        //Esercizio 4
+        System.out.println("---------------esercizio 4--------------");
+        
     }
 }
